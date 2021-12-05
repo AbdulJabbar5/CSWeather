@@ -14,7 +14,7 @@ import 'package:cs_weather/custom_widgets/app_text.dart';
 enum LocationMenu {
   LOCATION_KUALA_LUMPUR,
   LOCATION_GEORGE_TOWN,
-  LOCATION_JOHAR_BAHRU,
+  LOCATION_JOHOR_BAHRU,
   LOCATION_USE_CURRENT,
   LOCATION_ALL_CITY
 }
@@ -51,7 +51,7 @@ class HomeWidget {
             _menuItemBuilder(
                 CityList.cityList[1], LocationMenu.LOCATION_GEORGE_TOWN),
             _menuItemBuilder(
-                CityList.cityList[2], LocationMenu.LOCATION_JOHAR_BAHRU),
+                CityList.cityList[2], LocationMenu.LOCATION_JOHOR_BAHRU),
             _menuItemBuilder(
                 CityList.cityList[3], LocationMenu.LOCATION_ALL_CITY),
             _menuItemBuilder(
@@ -101,7 +101,7 @@ class HomeWidget {
               ),
               currentDateTimeWidget(),
               AppText(
-                text: '${data.temperature.celsius.toStringAsFixed(1)}°',
+                text: '${data.temperature!.celsius.toStringAsFixed(1)}°',
                 fontSize: doubleBigTextSize,
                 alignment: TextAlign.start,
               ),
@@ -189,7 +189,7 @@ class HomeWidget {
                     SUN_RISE,
                     GIF_SUNRISE,
                     DateFormat('hh:mm a').format(
-                      DateTime.fromMillisecondsSinceEpoch(data.sunrise * 1000),
+                      DateTime.fromMillisecondsSinceEpoch(data.sunrise! * 1000),
                     ),
                   );
                 }
@@ -200,7 +200,7 @@ class HomeWidget {
                     SUN_SET,
                     GIF_SUNSET,
                     DateFormat('hh:mm a').format(
-                      DateTime.fromMillisecondsSinceEpoch(data.sunset * 1000),
+                      DateTime.fromMillisecondsSinceEpoch(data.sunset! * 1000),
                     ),
                   );
                 }
@@ -214,7 +214,7 @@ class HomeWidget {
               default:
                 {
                   return _swipeView(
-                      HUMIDITY, GIF_HUMIDITY, data.humidity.toStringAsFixed(2));
+                      HUMIDITY, GIF_HUMIDITY, data.humidity!.toStringAsFixed(2));
                 }
             }
           },
@@ -264,7 +264,7 @@ class HomeWidget {
       case LocationMenu.LOCATION_GEORGE_TOWN:
         homeProvider.filterBy(CityList.cityList[1]);
         break;
-      case LocationMenu.LOCATION_JOHAR_BAHRU:
+      case LocationMenu.LOCATION_JOHOR_BAHRU:
         homeProvider.filterBy(CityList.cityList[2]);
         break;
 

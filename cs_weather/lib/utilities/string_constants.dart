@@ -20,4 +20,10 @@ const String HUMIDITY = 'Humidity';
 const ROUTE_HOME = '/';
 const ROUTE_SELECT_CITY = 'citySelection/';
 
+// gifs
+const String GIF_WIND_MILL = 'assets/gif/gif_wind_mill.gif';
+const String GIF_SUNRISE = 'assets/gif/gif_sunrise.gif';
+const String GIF_SUNSET = 'assets/gif/gif_sunset.gif';
+const String GIF_HUMIDITY = 'assets/gif/gif_humidity.gif';
+
 
