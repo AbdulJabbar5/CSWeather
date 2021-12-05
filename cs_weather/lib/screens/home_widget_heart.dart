@@ -1,4 +1,7 @@
 import 'dart:ui';
+import 'package:cs_weather/custom_widgets/loading_failed_widget.dart';
+import 'package:cs_weather/data/weather_response.dart';
+import 'package:cs_weather/providers/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:cs_weather/utilities/string_constants.dart';
 import 'package:cs_weather/utilities/size_constants.dart';
@@ -67,7 +70,6 @@ class HomeWidget {
     }
     return SafeArea(
       child: Container(
-        decoration: backgroundDecoration(),
         child: BackdropFilter(
           filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
           child: homeProvider.weatherResponse != null

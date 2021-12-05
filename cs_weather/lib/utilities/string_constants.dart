@@ -16,4 +16,8 @@ const String SUN_RISE = 'Sunrise';
 const String SUN_SET = 'Sunset';
 const String HUMIDITY = 'Humidity';
 
+// router constants
+const ROUTE_HOME = '/';
+const ROUTE_SELECT_CITY = 'citySelection/';
+
 

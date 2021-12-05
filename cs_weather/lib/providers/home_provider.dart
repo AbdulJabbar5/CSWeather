@@ -4,7 +4,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:cs_weather/network/base_provider.dart';
 import 'package:cs_weather/data/weather_response.dart';
 import 'package:cs_weather/network/api_repository.dart';
-import 'package:weatherapp/route/routes_constants.dart';
 import 'package:cs_weather/utilities/toast_message.dart';
 import 'package:cs_weather/utilities/string_constants.dart';
 import 'package:cs_weather/utilities/city_constants.dart';
