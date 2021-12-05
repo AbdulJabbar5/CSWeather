@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:connectivity/connectivity.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:cs_weather/utilities/toast_message.dart';
+import 'package:cs_weather/utilities/string_constants.dart';
 
 // https methods
 enum APIMethod {
@@ -14,7 +14,7 @@ enum APIMethod {
 class ServiceProvider {
 
   // base URL
-  String _baseURL = '';
+  String _apiBaseURL = BASE_URL;
 
   // initialization
   ServiceProvider();
@@ -36,7 +36,7 @@ class ServiceProvider {
     }
 
     var responseData;
-    final url = Uri.encodeFull(_baseURL + path!);
+    final url = Uri.encodeFull(_apiBaseURL + path!);
 
     switch (method) {
       case APIMethod.GET:
