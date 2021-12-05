@@ -21,11 +21,11 @@ class ServiceProvider {
 
   // api request
   Future callWebService(
-      {@required String path,
-        Encoding encoding,
-        @required APIMethod method,
-        Map<String, dynamic> body,
-        Map<String, String> headers}) async {
+      { String? path,
+        Encoding? encoding,
+        APIMethod? method,
+        Map<String, dynamic>? body,
+        Map<String, String>? headers}) async {
 
     var connectivityResult = await (Connectivity().checkConnectivity());
 
@@ -36,7 +36,7 @@ class ServiceProvider {
     }
 
     var responseData;
-    final url = Uri.encodeFull(_baseURL + path);
+    final url = Uri.encodeFull(_baseURL + path!);
 
     switch (method) {
       case APIMethod.GET:

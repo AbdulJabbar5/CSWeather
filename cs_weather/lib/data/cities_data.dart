@@ -1,12 +1,11 @@
 class CitiesData {
 
   // parameters
-  String city;
-  String admin;
-  String country;
-  String lat;
-  String lng;
-  bool isFavourite;
+  String? city;
+  String? admin;
+  String? country;
+  String? lat;
+  String? lng;
 
   CitiesData({this.city, this.admin, this.country, this.lat, this.lng});
 
@@ -16,11 +15,10 @@ class CitiesData {
     country = json['country'];
     lat = json['lat'];
     lng = json['lng'];
-    isFavourite = false;
   }
 
   static List<CitiesData> fromJsonToList(List<dynamic> list) {
-    final weathers = List<CitiesData>();
+    final weathers = <CitiesData>[];
     for (int i = 0; i < list.length; i++) {
       weathers.add(
         CitiesData.fromJson(list[i]),

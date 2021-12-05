@@ -3,21 +3,21 @@ import 'package:cs_weather/utilities/temperature_conversion.dart';
 import 'package:cs_weather/utilities/weather_icons.dart';
 
 class WeatherDetails {
-  int id;
-  int time;
-  int sunrise;
-  int sunset;
-  int humidity;
-  String description;
-  String iconCode;
-  String main;
-  String name;
-  double windSpeed;
-  Temperature temperature;
-  Temperature maxTemperature;
-  Temperature minTemperature;
+  int? id;
+  int? time;
+  int? sunrise;
+  int? sunset;
+  int? humidity;
+  String? description;
+  String? iconCode;
+  String? main;
+  String? name;
+  double? windSpeed;
+  Temperature? temperature;
+  Temperature? maxTemperature;
+  Temperature? minTemperature;
 
-  List<WeatherDetails> forecast;
+  List<WeatherDetails>? forecast;
 
   WeatherDetails(
       {this.id,
@@ -55,7 +55,7 @@ class WeatherDetails {
   }
 
   static List<WeatherDetails> fromForecastJson(Map<String, dynamic> json) {
-    final weathers = List<WeatherDetails>();
+    final weathers = <WeatherDetails>[];
     for (final item in json['list']) {
       weathers.add(WeatherDetails(
           time: item['dt'],
