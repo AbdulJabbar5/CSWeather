@@ -33,6 +33,9 @@ dependencies:
   fluttertoast: ^4.0.1
   connectivity: ^0.4.8+2
   geolocator: ^5.0.0
+  hive: ^1.4.1+1
+  hive_flutter: ^0.3.0+2
+  path_provider: ^1.6.7
 
 dev_dependencies:
   flutter_test:
