@@ -8,55 +8,48 @@ import 'package:cs_weather/utilities/toast_message.dart';
 import 'package:cs_weather/utilities/string_constants.dart';
 import 'package:cs_weather/utilities/city_constants.dart';
 
-///[HomeProvider] is handling all business logic and details
 class HomeProvider extends BaseProvider {
   final _repository = ApiRepository();
   final BuildContext context;
-  WeatherDetails _weatherResponse;
-  List<WeatherDetails> _forecastWeatherResponse;
-  String _searchCity;
+  WeatherDetails? _weatherResponse;
+  late List<WeatherDetails> _forecastWeatherResponse;
+  late String _searchCity;
 
-  ///:::::::::::::: CONSTRUCTOR ::::::::::::::
   HomeProvider(this.context) {
-    filterBy(CityList.cityList[0]);
+    filterBy(CitiesList.cityList[0]);
     loadJson(context);
   }
 
-  ///::::::::::::::API ==> https://api.openweathermap.org/data/2.5/::::::::::::::
   Future<void> getCurrentWeather(String city) async {
     super.isLoading = true;
     WeatherDetails response;
-    response = await _repository.getCurrentWeather(city);
+    response = (await _repository.getCurrentWeather(city))!;
     super.isLoading = false;
     if (response != null) {
-      //update data
       weatherResponse = response;
     } else {
-      weatherResponse = null;
+      //weatherResponse = null;
     }
   }
 
-  ///::::::::::::::API ==> https://api.openweathermap.org/data/2.5/::::::::::::::
   Future<void> getForecastWeather(String city) async {
     super.isLoading = true;
     List<WeatherDetails> response;
-    response = await _repository.getForecastWeather(city);
+    response = (await _repository.getForecastWeather(city))!;
     super.isLoading = false;
     if (response != null) {
       forecastWeatherResponse = response;
     } else {
-      forecastWeatherResponse = null;
+      //forecastWeatherResponse = null;
     }
   }
 
-  ///::::::::::::::FILTER BASED ON CITY SELECTION ::::::::::::::
   void filterBy(String searchCity) {
     this.searchCity = searchCity;
     getCurrentWeather(searchCity);
     getForecastWeather(searchCity);
   }
 
-  ///::::::::::::::GETTING USER CURRENT LOCATION ::::::::::::::
   getUserLocation() async {
     super.isLoading = true;
     Position position = await Geolocator()
@@ -64,26 +57,24 @@ class HomeProvider extends BaseProvider {
     if (position != null) {
       getWeatherByLocation(position);
     } else {
-      AppMessage.toast('Permission Denied!!');
+      AppMessage.toast('Permission Denied!!', toastType: ToastType.FAILED);
       super.isLoading = false;
     }
   }
 
-  ///::::::::::::::FILTER BASED ON USER CURRENT LOCATION ::::::::::::::
   Future<void> getWeatherByLocation(Position position) async {
     super.isLoading = true;
     WeatherDetails response;
-    response = await _repository.getLocationByLocation(
-        position.latitude, position.longitude);
+    response = (await _repository.getLocationByLocation(
+        position.latitude, position.longitude))!;
     super.isLoading = false;
     if (response != null) {
       weatherResponse = response;
     } else {
-      forecastWeatherResponse = null;
+      //forecastWeatherResponse = null;
     }
   }
 
-  ///::::::::::::::ENCAPSULATION VARIABLES::::::::::::::
   WeatherDetails get weatherResponse => _weatherResponse;
 
   set weatherResponse(WeatherDetails value) {
@@ -105,7 +96,6 @@ class HomeProvider extends BaseProvider {
     notifyListeners();
   }
 
-  ///LOAD JSON LIST FROM ASSET
   void loadJson(BuildContext context) async {
     String data = await DefaultAssetBundle.of(context)
         .loadString(JSON_CITIES_IN_MALAYSIA);
@@ -116,7 +106,7 @@ class HomeProvider extends BaseProvider {
   void otherCityOnClicked() async {
     final result = await Navigator.pushNamed(context, ROUTE_SELECT_CITY);
     if (result != null) {
-      filterBy(result);
+      filterBy(result.toString());
     }
   }
 }

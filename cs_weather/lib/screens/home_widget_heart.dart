@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:cs_weather/custom_widgets/loading_failed_widget.dart';
 import 'package:cs_weather/data/weather_response.dart';
 import 'package:cs_weather/providers/home_provider.dart';
+import 'package:cs_weather/utilities/city_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:cs_weather/utilities/string_constants.dart';
 import 'package:cs_weather/utilities/size_constants.dart';
@@ -9,6 +10,7 @@ import 'package:cs_weather/utilities/color_constants.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:intl/intl.dart';
 import 'package:cs_weather/custom_widgets/app_text.dart';
+import 'package:cs_weather/custom_widgets/horizontal_weather.dart';
 
 // menu list for locations
 enum LocationMenu {
@@ -27,7 +29,7 @@ class HomeWidget {
   HomeWidget(this.homeProvider, this.context);
 
   // appbar widget
-  Widget appBar() {
+  PreferredSizeWidget appBar() {
     return AppBar(
       title: AppText(
         text: APP_NAME,
@@ -47,15 +49,15 @@ class HomeWidget {
           ),
           itemBuilder: (context) => <PopupMenuEntry<LocationMenu>>[
             _menuItemBuilder(
-                CityList.cityList[0], LocationMenu.LOCATION_KUALA_LUMPUR),
+                CitiesList.cityList[0], LocationMenu.LOCATION_KUALA_LUMPUR),
             _menuItemBuilder(
-                CityList.cityList[1], LocationMenu.LOCATION_GEORGE_TOWN),
+                CitiesList.cityList[1], LocationMenu.LOCATION_GEORGE_TOWN),
             _menuItemBuilder(
-                CityList.cityList[2], LocationMenu.LOCATION_JOHOR_BAHRU),
+                CitiesList.cityList[2], LocationMenu.LOCATION_JOHOR_BAHRU),
             _menuItemBuilder(
-                CityList.cityList[3], LocationMenu.LOCATION_ALL_CITY),
+                CitiesList.cityList[3], LocationMenu.LOCATION_ALL_CITY),
             _menuItemBuilder(
-                CityList.cityList[4], LocationMenu.LOCATION_USE_CURRENT),
+                CitiesList.cityList[4], LocationMenu.LOCATION_USE_CURRENT),
           ],
         )
       ],
@@ -80,7 +82,7 @@ class HomeWidget {
               Row(
                 children: <Widget>[
                   AppText(
-                    text: data.name,
+                    text: data.name ?? "",
                     fontSize: bigTextSize,
                     alignment: TextAlign.start,
                   ),
@@ -259,13 +261,13 @@ class HomeWidget {
   _onOptionMenuItemSelected(LocationMenu item) {
     switch (item) {
       case LocationMenu.LOCATION_KUALA_LUMPUR:
-        homeProvider.filterBy(CityList.cityList[0]);
+        homeProvider.filterBy(CitiesList.cityList[0]);
         break;
       case LocationMenu.LOCATION_GEORGE_TOWN:
-        homeProvider.filterBy(CityList.cityList[1]);
+        homeProvider.filterBy(CitiesList.cityList[1]);
         break;
       case LocationMenu.LOCATION_JOHOR_BAHRU:
-        homeProvider.filterBy(CityList.cityList[2]);
+        homeProvider.filterBy(CitiesList.cityList[2]);
         break;
 
       case LocationMenu.LOCATION_ALL_CITY:

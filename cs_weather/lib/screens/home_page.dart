@@ -1,5 +1,7 @@
 import 'package:cs_weather/providers/home_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:provider/provider.dart';
 import 'home_widget_heart.dart';
 
 class HomePage extends StatefulWidget {
@@ -8,7 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  HomeWidget _homeWidget;
+  late HomeWidget _homeWidget;
 
   @override
   Widget build(BuildContext context) {

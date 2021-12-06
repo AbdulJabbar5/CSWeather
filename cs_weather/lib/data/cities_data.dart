@@ -6,6 +6,7 @@ class CitiesData {
   String? country;
   String? lat;
   String? lng;
+  bool? isFavourite;
 
   CitiesData({this.city, this.admin, this.country, this.lat, this.lng});
 

@@ -1,15 +1,15 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:weatherapp/data/data_city_list.dart';
-import 'package:weatherapp/data/fav_city.dart';
+import 'package:cs_weather/data/cities_data.dart';
+import 'package:cs_weather/data/fav_city.dart';
 import 'package:cs_weather/network/base_provider.dart';
 import 'package:cs_weather/utilities/string_constants.dart';
 
 class CitySelectionProvider extends BaseProvider {
   BuildContext context;
-  List<CityListData> _listOfAllCity;
-  Box<FavCity> favCityBox;
+  List<CitiesData>? _listOfAllCity;
+  Box<FavCity>? favCityBox;
   
   CitySelectionProvider(this.context) {
     super.isLoading = true;
@@ -18,27 +18,27 @@ class CitySelectionProvider extends BaseProvider {
   }
 
   Future<void> loadJson() async {
-    if (favCityBox.length == 0) {
+    if (favCityBox!.length == 0) {
       String data = await DefaultAssetBundle.of(context)
           .loadString(JSON_CITIES_IN_MALAYSIA);
       final cityJson = json.decode(data);
-      listOfAllCity = CityListData.fromJsonToList(cityJson);
+      listOfAllCity = CitiesData.fromJsonToList(cityJson);
       listOfAllCity.forEach((item) {
-        addToHive(FavCity(item.city, item.admin, item.country, item.lat,
-            item.lng, item.isFavourite));
+        addToHive(FavCity(item.city ?? "", item.admin ?? "", item.country ?? "", item.lat ?? "",
+            item.lng ?? "", item.isFavourite ?? false));
       });
     }
     super.isLoading = false;
   }
 
   void addToHive(FavCity item) async {
-    await favCityBox.put(item.city, item);
+    await favCityBox!.add(item);
     notifyListeners();
   }
 
-  List<CityListData> get listOfAllCity => _listOfAllCity;
+  List<CitiesData> get listOfAllCity => _listOfAllCity ?? [];
 
-  set listOfAllCity(List<CityListData> value) {
+  set listOfAllCity(List<CitiesData> value) {
     _listOfAllCity = value;
     notifyListeners();
   }

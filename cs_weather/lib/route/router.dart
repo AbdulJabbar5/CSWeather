@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weatherapp/ui/citysecection/city_selection_page.dart';
+import 'package:cs_weather/screens/city_selection_page.dart';
 import 'package:cs_weather/utilities/string_constants.dart';
 
 class Router {

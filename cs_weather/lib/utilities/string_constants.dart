@@ -19,11 +19,16 @@ const String HUMIDITY = 'Humidity';
 // router constants
 const ROUTE_HOME = '/';
 const ROUTE_SELECT_CITY = 'citySelection/';
+const String CITY_SELECTION_TITLE = 'Select favourite city';
 
 // gifs
-const String GIF_WIND_MILL = 'assets/gif/gif_wind_mill.gif';
-const String GIF_SUNRISE = 'assets/gif/gif_sunrise.gif';
-const String GIF_SUNSET = 'assets/gif/gif_sunset.gif';
-const String GIF_HUMIDITY = 'assets/gif/gif_humidity.gif';
+const String GIF_WIND_MILL = 'resources/gif/gif_wind_mill.gif';
+const String GIF_SUNRISE = 'resources/gif/gif_sunrise.gif';
+const String GIF_SUNSET = 'resources/gif/gif_sunset.gif';
+const String GIF_HUMIDITY = 'resources/gif/gif_humidity.gif';
+
+// database
+const String BOX_NAME = 'DATABASE_CITY_LIST';
+const String KEY_CITY_LIST = 'KEY_CITY_LIST';
 
 
