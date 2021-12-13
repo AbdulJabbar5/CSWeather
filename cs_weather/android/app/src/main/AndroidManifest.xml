@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.abduljabbar.cs_weather">
    <application
-        android:label="cs_weather"
+        android:label="CSWeather"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

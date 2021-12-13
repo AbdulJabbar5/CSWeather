@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cs_weather/utilities/temperature_conversion.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:cs_weather/network/base_provider.dart';
@@ -11,8 +12,8 @@ import 'package:cs_weather/utilities/city_constants.dart';
 class HomeProvider extends BaseProvider {
   final _repository = ApiRepository();
   final BuildContext context;
-  WeatherDetails _weatherResponse = WeatherDetails();
-  late List<WeatherDetails> _forecastWeatherResponse;
+  WeatherDetails _weatherResponse = WeatherDetails(id: 500, name: 'London', time: 5, sunrise: 8, sunset: 9, humidity: 1000, description: '', iconCode: 'd9', windSpeed: 0.7, temperature: Temperature(0.6), maxTemperature: Temperature(0.7), minTemperature: Temperature(0.9));
+  late List<WeatherDetails> _forecastWeatherResponse = [];
   late String _searchCity;
 
   HomeProvider(this.context) {

@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:cs_weather/screens/home_page.dart';
 import 'package:cs_weather/utilities/color_constants.dart';
 import 'package:cs_weather/utilities/string_constants.dart';

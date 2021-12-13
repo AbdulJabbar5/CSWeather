@@ -38,6 +38,8 @@ class ServiceProvider {
     var responseData;
     final url = Uri.encodeFull(_apiBaseURL + path!);
 
+    print(url.toString());
+
     switch (method) {
       case APIMethod.GET:
         {

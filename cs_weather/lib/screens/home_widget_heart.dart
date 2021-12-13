@@ -72,6 +72,7 @@ class HomeWidget {
     }
     return SafeArea(
       child: Container(
+        color: Colors.blue,
         child: BackdropFilter(
           filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
           child: homeProvider.weatherResponse != null
