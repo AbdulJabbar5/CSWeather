@@ -63,3 +63,12 @@ flutter:
     - gif_sunset.gif
     - gif_humidity.gif
     - my_cities.json
+
+  fonts:
+    - family: Exo
+      fonts:
+        - asset: fonts/exo_semi_bold.ttf
+        - asset: fonts/exo_regular.ttf
+    - family: WeatherIcons
+      fonts:
+        - asset: fonts/weathericons-regular.ttf
