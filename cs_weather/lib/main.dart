@@ -7,7 +7,6 @@ import 'package:hive/hive.dart';
 import 'package:cs_weather/route/router.dart';
 import 'package:path_provider/path_provider.dart' as pathProvider;
 import 'data/fav_city.dart';
-import 'package:flutter/src/widgets/router.dart';
 
 // initial starting point of our application
 void main() async {
@@ -31,7 +30,7 @@ class CSWeather extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primaryColor: colorPrimary, fontFamily: 'Exo'),
       home: HomePage(),
-      onGenerateRoute: Router.generateRoute,
+      onGenerateRoute: CSWRouter.generateRoute,
     );
   }
 }

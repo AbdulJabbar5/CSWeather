@@ -66,7 +66,7 @@ class HomeWidget {
 
   // body widget
   Widget homeBody() {
-    WeatherDetails data;
+    WeatherDetails data = WeatherDetails();
     if (homeProvider.weatherResponse != null) {
       data = homeProvider.weatherResponse;
     }
@@ -125,7 +125,7 @@ class HomeWidget {
               gap(),
               homeProvider.forecastWeatherResponse != null
                   ? ForecastHorizontalList(
-                weatherList: homeProvider.forecastWeatherResponse,
+                weatherList: homeProvider.forecastWeatherResponse, key: Key(""),
               )
                   : Container(),
               gap(),

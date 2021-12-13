@@ -11,7 +11,7 @@ import 'package:cs_weather/utilities/city_constants.dart';
 class HomeProvider extends BaseProvider {
   final _repository = ApiRepository();
   final BuildContext context;
-  WeatherDetails? _weatherResponse;
+  WeatherDetails _weatherResponse = WeatherDetails();
   late List<WeatherDetails> _forecastWeatherResponse;
   late String _searchCity;
 
